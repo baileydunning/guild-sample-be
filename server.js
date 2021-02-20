@@ -21,3 +21,14 @@ app.get('/courses', (req, res) => {
   const allCourses = app.locals.courses
   res.json({ allCourses })
 })
+
+app.get('/courses/:id', (req, res) => {
+  const courseId = parseInt(req.params.id)
+  const course = app.locals.courses.find(course => course.id === courseId)
+ 
+  if (!course) {
+    return res.sendStatus(404)
+  }
+
+  res.status(200).json(course)
+})
