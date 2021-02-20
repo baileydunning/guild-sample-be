@@ -32,3 +32,8 @@ app.get('/courses/:id', (req, res) => {
 
   res.status(200).json(course)
 })
+
+app.get('/students', (req, res) => {
+  const allStudents = app.locals.students
+  res.json({ allStudents })
+})
