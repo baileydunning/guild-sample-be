@@ -69,6 +69,7 @@ app.post('/courses/:courseId/register', (req, res) => {
   const courseId = parseInt(req.params.courseId)
   const studentId = req.body
   const course = app.locals.courses.find(course => course.id === courseId)
+  const student = app.locals.students.find(student => student.id === student.id)
   
   if (!course || !student) {
     return res.sendStatus(404)
