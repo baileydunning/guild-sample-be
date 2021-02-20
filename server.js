@@ -70,11 +70,11 @@ app.post('/courses/:courseId/register', (req, res) => {
   const studentId = req.body
   const course = app.locals.courses.find(course => course.id === courseId)
   
-  if (!course) {
+  if (!course || !student) {
     return res.sendStatus(404)
+  } else {
+    course.students.push(studentId)
+    res.status(200).json(course)
   }
-  
-  course.students.push(studentId)
-  res.status(200).json(course)
 })
 
