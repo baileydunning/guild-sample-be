@@ -37,3 +37,14 @@ app.get('/students', (req, res) => {
   const allStudents = app.locals.students
   res.json({ allStudents })
 })
+
+app.get('/students/:id', (req, res) => {
+  const studentId = parseInt(req.params.id)
+  const student = app.locals.students.find(student => student.id === studentId)
+
+  if (!student) {
+    return res.sendStatus(404)
+  }
+
+  res.status(200).json(student)
+})
