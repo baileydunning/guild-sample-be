@@ -65,3 +65,16 @@ app.get('/courses/:id', (req, res) => {
   res.status(200).json(course)
 })
 
+app.post('/courses/:id', (req, res) => {
+  const courseId = parseInt(req.params.id)
+  const studentId = req.body
+  const course = app.locals.courses.find(course => course.id === courseId)
+  
+  if (!course) {
+    return res.sendStatus(404)
+  }
+  
+  course.students.push(studentId)
+  res.status(200).json(course)
+})
+
