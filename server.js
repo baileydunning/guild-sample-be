@@ -69,10 +69,22 @@ app.post('/courses/:courseId/register', (req, res) => {
   const courseId = parseInt(req.params.courseId)
   const studentId = req.body
   const course = app.locals.courses.find(course => course.id === courseId)
-  const student = app.locals.students.find(student => student.id === student.id)
+  const student = app.locals.students.find(student => student.id === studentId.id)
   
   if (!course || !student) {
     return res.sendStatus(404)
+  } else if (!studentId.enrolled) {
+    console.log('unenroll')
+    const updatedRoster = course.students.filter(student => studentId.id !== student.id)
+    app.locals.courses = app.locals.courses.map(courseData => {
+      if (course.id === courseData.id) {
+        courseData.students = updatedRoster
+        return courseData
+      } else {
+        return courseData
+      }
+    })
+    res.status(200).json(course)
   } else {
     course.students.push(studentId)
     res.status(200).json(course)
