@@ -1,4 +1,4 @@
-export const courses = {
+const courses = {
   data: [
     {
       id: 1,
