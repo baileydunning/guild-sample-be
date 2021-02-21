@@ -7,7 +7,7 @@
 | Post student | http://localhost:4000/students/        | POST    |  `{id: <integer>, name: <string>, email: <string>}`  |
 | Get all courses | http://localhost:4000/courses | GET | n/a
 | Get course by id | http://localhost:4000/courses/:id | GET    | n/a                                      |
-| Register student | http://localhost:4000/courses/:id/register | POST   | `{id: <integer>}` |
+| (Un)Register student | http://localhost:4000/courses/:id/register | POST   | `{id: <integer>}` |
 
 
 ## Technologies
